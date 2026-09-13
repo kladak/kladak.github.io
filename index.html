@@ -1,363 +1,235 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-
-<title>Your Name</title>
-
-<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
-
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
-
-
-
-
-
-<link rel="stylesheet" href="styles.css" type="text/css" />
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Karim Ladak — Applied AI and software engineer. Portfolio: clinical RAG, agent reliability harnesses, and full-stack systems." />
+  <meta name="theme-color" content="#1c1917" />
+  <title>Karim Ladak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-
-<div class="container-fluid main-container">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="#top">Karim Ladak</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
       </button>
-      <a class="navbar-brand" href="index.html">My Site</a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-heading">
+      <div class="hero-copy">
+        <p class="eyebrow">Austin, TX · Applied AI / Software</p>
+        <h1 id="hero-heading">Building grounded AI systems and reliable software for health and ops.</h1>
+        <p class="lede">
+          UT Austin Computational Biology grad (CS certificate). I work at the intersection of
+          retrieval-augmented generation, agent evaluation, and production web services —
+          with a bias toward clear architectures and honest demos.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View projects</a>
+          <a class="btn btn-ghost" href="mailto:ladakakarim@gmail.com">Email me</a>
+        </div>
+        <ul class="hero-links" aria-label="Profiles">
+          <li><a href="https://github.com/kladak" rel="noopener noreferrer" target="_blank">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/kladak77" rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+          <li><a href="mailto:ladakakarim@gmail.com">ladakakarim@gmail.com</a></li>
+        </ul>
+      </div>
+      <figure class="hero-photo">
+        <img src="avatar.jpg" width="320" height="320" alt="Portrait of Karim Ladak" />
+      </figure>
+    </section>
+
+    <section class="section wrap" id="about" aria-labelledby="about-heading">
+      <div class="section-head">
+        <h2 id="about-heading">About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-prose">
+          <p>
+            I care about systems you can inspect: source-grounded answers, traces you can read,
+            and evals that fail loudly when something regresses. Most of my recent public work
+            sits in Applied AI engineering — RAG pipelines, tool routers, and offline-first harnesses —
+            alongside full-stack product work in health tech and high-volume services.
+          </p>
+          <p>
+            Previously: biometric event systems at Dubai World Trade Centre, healthcare SaaS at
+            SpeciaList Health, and software engineering internships at Expedia Group and Sysco.
+            Currently advising a multi-site cardiology and oncology clinic on EMR workflow and
+            clinical data infrastructure.
+          </p>
+        </div>
+        <aside class="about-aside" aria-label="Focus areas">
+          <h3>Focus</h3>
+          <ul>
+            <li>RAG &amp; clinical decision-support demos</li>
+            <li>Agent reliability / eval harnesses</li>
+            <li>APIs, React, and cloud services</li>
+            <li>Health-tech product engineering</li>
+          </ul>
+          <h3>Education</h3>
+          <p>
+            B.S. Computational Biology · Computer Science Certificate · Entrepreneurship Minor<br />
+            The University of Texas at Austin · May 2025
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section-muted wrap" id="projects" aria-labelledby="projects-heading">
+      <div class="section-head">
+        <h2 id="projects-heading">Projects</h2>
+        <p class="section-sub">Selected public work. Descriptions match what the repos actually do.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="tag">Python · LangGraph · FastAPI · React</span>
+          </div>
+          <h3><a href="https://github.com/kladak/clinicalRAG" rel="noopener noreferrer" target="_blank">ClinicalRAG</a></h3>
+          <p>
+            Educational clinical decision-support demo: guideline questions answered from a local
+            document collection with retrieval, source citations, grounding checks, and hashed
+            audit logging. Not a medical device — research / portfolio CDS only.
+          </p>
+          <a class="text-link" href="https://github.com/kladak/clinicalRAG" rel="noopener noreferrer" target="_blank">View repository</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="tag">Python · eval harness · traces</span>
+          </div>
+          <h3><a href="https://github.com/kladak/agent-reliability" rel="noopener noreferrer" target="_blank">agent-reliability</a></h3>
+          <p>
+            Agent reliability harness v0: deterministic runtime with tool routing, JSONL traces,
+            policy gates, graders, and offline CI evals. Measures the harness — not LLM agent quality.
+          </p>
+          <a class="text-link" href="https://github.com/kladak/agent-reliability" rel="noopener noreferrer" target="_blank">View repository</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="tag">React Native · Flask · API</span>
+          </div>
+          <h3><a href="https://github.com/kladak/PLAN-IT" rel="noopener noreferrer" target="_blank">PLAN-IT</a></h3>
+          <p>
+            Plant recommender API and mobile app built around Texas A&amp;M Earth-Kind plant data —
+            Flask backend with tests/Docker, Expo / React Native frontend.
+          </p>
+          <a class="text-link" href="https://github.com/kladak/PLAN-IT" rel="noopener noreferrer" target="_blank">View repository</a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section wrap" id="experience" aria-labelledby="experience-heading">
+      <div class="section-head">
+        <h2 id="experience-heading">Experience</h2>
+        <p class="section-sub">Highlights from recent roles. No proprietary product claims.</p>
+      </div>
+      <ol class="timeline">
         <li>
-  <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="portfolio.html">Portfolio</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
+          <div class="timeline-when">Aug 2025 – Present</div>
+          <div class="timeline-body">
+            <h3>Health Tech Consultant · Precision Cardiology</h3>
+            <p>
+              Advising a multi-site cardiology and oncology clinic on EMR workflow optimization,
+              clinical data infrastructure, and technical strategy — plus web infrastructure and
+              SEO for patient-facing presence.
+            </p>
+          </div>
+        </li>
         <li>
-  <a href="mailto:&lt;your@email.com&gt;">
-    <span class="fa fa-envelope fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="http://github.com/USERNAME/">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="http://linkedin.com/USERNAME">
-    <span class="fa fa-linkedin fa-lg"></span>
-     
-  </a>
-</li>
+          <div class="timeline-when">May 2025 – Jul 2025</div>
+          <div class="timeline-body">
+            <h3>Biometric Systems Engineer · Dubai World Trade Centre</h3>
+            <p>
+              Real-time biometric monitoring for live events: event-driven microservices on AWS,
+              stream processing with Kinesis, Redis caching, and multi-region failover for concurrent
+              attendees.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-when">Aug 2024 – May 2025</div>
+          <div class="timeline-body">
+            <h3>HealthTech Product Intern · SpeciaList Health</h3>
+            <p>
+              Shipped multi-tenant healthcare SaaS features in React and Node.js — auth, validation,
+              and graph-based patient-to-specialist matching for referral workflows.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-when">May 2024 – Aug 2024</div>
+          <div class="timeline-body">
+            <h3>Software Engineering Intern · Expedia Group</h3>
+            <p>
+              Node.js and Java microservices for high-volume travel workflows — REST APIs, message
+              queues, distributed tracing, and containerized deploys on AWS/Azure.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-when">Jun 2023 – May 2024</div>
+          <div class="timeline-body">
+            <h3>Software Engineering Intern · Sysco</h3>
+            <p>
+              AWS Lambda and DynamoDB data paths for supply-chain transactions; PostgreSQL tuning
+              for revenue-critical operational dashboards.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section section-contact wrap" id="contact" aria-labelledby="contact-heading">
+      <div class="section-head">
+        <h2 id="contact-heading">Contact</h2>
+      </div>
+      <p class="contact-lede">
+        Open to Applied AI, health-tech, and software engineering roles.
+        Say hello — I read every note.
+      </p>
+      <ul class="contact-list">
+        <li>
+          <span class="contact-label">Email</span>
+          <a href="mailto:ladakakarim@gmail.com">ladakakarim@gmail.com</a>
+        </li>
+        <li>
+          <span class="contact-label">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/kladak77" rel="noopener noreferrer" target="_blank">linkedin.com/in/kladak77</a>
+        </li>
+        <li>
+          <span class="contact-label">GitHub</span>
+          <a href="https://github.com/kladak" rel="noopener noreferrer" target="_blank">github.com/kladak</a>
+        </li>
       </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+    </section>
+  </main>
 
-<div id="header">
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© <span id="year"></span> Karim Ladak</p>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
 
-
-
-
-</div>
-
-
-<p><img src="avatar.jpg" style=width:40% class="img-circle"></p>
-<p><br></p>
-<div id="welcome-i-am-bevo-xv." class="section level1">
-<h1>Welcome! I am Bevo XV.</h1>
-<p></br></p>
-<div
-id="i-weigh-almost-one-ton-and-my-horns-are-5-feet-long-from-tip-to-tip."
-class="section level5">
-<h5>I weigh almost one ton and my horns are ~5 feet long from tip to
-tip.</h5>
-</div>
-<div id="i-enjoy-football-and-chewing-on-various-grasses."
-class="section level5">
-<h5>I enjoy football and chewing on various grasses.</h5>
-</div>
-<div
-id="i-do-not-like-the-uga-bulldog-and-i-do-not-hold-any-advanced-degrees."
-class="section level5">
-<h5>I do not like the UGA Bulldog and I do not hold any advanced
-degrees.</h5>
-</div>
-<div
-id="i-dont-have-any-data-related-projects-either-but-if-i-did-you-could-find-them-here"
-class="section level5">
-<h5>I don’t have any data-related projects either, but if I did you
-could find them <a href="/portfolio">here</a>!</h5>
-<hr />
-</div>
-</div>
-
-
-
-
-</div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+  <script src="script.js" defer></script>
 </body>
 </html>
